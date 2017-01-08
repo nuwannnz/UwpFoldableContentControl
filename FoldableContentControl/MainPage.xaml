@@ -5,9 +5,58 @@
     xmlns:local="using:FoldableContentControl"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:FoldableContentControl.Controls"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel>
+            <controls:FoldableContentControl HeaderText="My list" >
+                <controls:FoldableContentControl.FoldableContent>
+                    <ListView ItemsSource="{x:Bind MyItemList}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel BorderBrush="LightGray"
+                                        BorderThickness="0.5">
+                                    <TextBlock Text="{Binding}" 
+                                           HorizontalAlignment="Center"
+                                           Padding="10"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                <Setter  Property="Padding" Value="0"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </controls:FoldableContentControl.FoldableContent>
+            </controls:FoldableContentControl>
 
+
+            <controls:FoldableContentControl HeaderText="My list 2" >
+                <controls:FoldableContentControl.EmptyContent>
+                    <Grid>
+                        <StackPanel VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Margin="20">
+                            <FontIcon FontFamily="Segoe MDL2 Assets"
+                                  Glyph="&#xE007;"
+                                  RenderTransformOrigin="0.5,0.5"
+                                  HorizontalAlignment="Center"
+                                  Margin="10"
+                                  >
+                                <FontIcon.RenderTransform>
+                                    <ScaleTransform ScaleX="3" ScaleY="3" />
+                                </FontIcon.RenderTransform>
+                            </FontIcon>
+                            <TextBlock Text="No Items to display"
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </controls:FoldableContentControl.EmptyContent>
+            </controls:FoldableContentControl>
+        </StackPanel>
     </Grid>
 </Page>

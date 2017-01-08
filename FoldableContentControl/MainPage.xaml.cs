@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -22,9 +23,21 @@ namespace FoldableContentControl
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        public ObservableCollection<string> MyItemList { get; set; }
+
         public MainPage()
         {
             this.InitializeComponent();
+            MyItemList = new ObservableCollection<string>();
+            GenerateItems(10);
+        }
+
+        private void GenerateItems(int count)
+        {
+            for (int i = 1; i <= count; i++)
+            {
+                MyItemList.Add($"Item {i}");
+            }
         }
     }
 }
