@@ -11,3 +11,5 @@ A foldable content control for UWP platform
   <li><b>DisplayEmpty</b>: Set this to true if you want to display the Empty* things you set with the above 2 properties.If you hosted an ItemsControl, bind the Count property of that with a value converter.</li>
   <li><b>HeaderText</b>: Header content.</li>
 </ul>
+
+note: This project was created using Visual Studio 2017 RC. It may not open in Visual Studio 2015.
